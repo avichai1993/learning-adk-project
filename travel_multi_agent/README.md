@@ -33,9 +33,9 @@ Do not set provider keys (like a real OpenAI key) on the agent processes if you 
 
 Start each remote agent:
 
-- `uvicorn travel_multi_agent.flight_agent:flight_a2a_app --host localhost --port 8011`
-- `uvicorn travel_multi_agent.hotel_agent:hotel_a2a_app --host localhost --port 8012`
-- `uvicorn travel_multi_agent.itinerary_agent:itinerary_a2a_app --host localhost --port 8013`
+- `uvicorn travel_multi_agent.flight_agent.agent:flight_a2a_app --host localhost --port 8011`
+- `uvicorn travel_multi_agent.hotel_agent.agent:hotel_a2a_app --host localhost --port 8012`
+- `uvicorn travel_multi_agent.itinerary_agent.agent:itinerary_a2a_app --host localhost --port 8013`
 
 Smoke test agent cards:
 
