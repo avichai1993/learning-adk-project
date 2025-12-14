@@ -7,41 +7,41 @@ from google.adk.models.lite_llm import LiteLlm
 from .shared import settings
 
 
-def search_cheapest_hotels(
-    destination: str,
-    check_in: str,
-    check_out: str,
-    guests: int = 1,
-    rooms: int = 1,
-    budget_per_night_usd: int | None = None,
-) -> dict:
-    base = 85
-    if budget_per_night_usd is not None:
-        base = min(base, budget_per_night_usd)
-    return {
-        "status": "success",
-        "destination": destination,
-        "check_in": check_in,
-        "check_out": check_out,
-        "guests": guests,
-        "rooms": rooms,
-        "results": [
-            {
-                "name": "Mock Inn Budget",
-                "price_per_night_usd": base,
-                "rating": 7.9,
-                "distance_to_center_km": 2.4,
-                "notes": "Basic rooms, good value.",
-            },
-            {
-                "name": "Mock City Hotel",
-                "price_per_night_usd": base + 25,
-                "rating": 8.6,
-                "distance_to_center_km": 0.9,
-                "notes": "Central location, popular.",
-            },
-        ],
-    }
+# def search_cheapest_hotels(
+#     destination: str,
+#     check_in: str,
+#     check_out: str,
+#     guests: int = 1,
+#     rooms: int = 1,
+#     budget_per_night_usd: int | None = None,
+# ) -> dict:
+#     base = 85
+#     if budget_per_night_usd is not None:
+#         base = min(base, budget_per_night_usd)
+#     return {
+#         "status": "success",
+#         "destination": destination,
+#         "check_in": check_in,
+#         "check_out": check_out,
+#         "guests": guests,
+#         "rooms": rooms,
+#         "results": [
+#             {
+#                 "name": "Mock Inn Budget",
+#                 "price_per_night_usd": base,
+#                 "rating": 7.9,
+#                 "distance_to_center_km": 2.4,
+#                 "notes": "Basic rooms, good value.",
+#             },
+#             {
+#                 "name": "Mock City Hotel",
+#                 "price_per_night_usd": base + 25,
+#                 "rating": 8.6,
+#                 "distance_to_center_km": 0.9,
+#                 "notes": "Central location, popular.",
+#             },
+#         ],
+#     }
 
 
 root_agent = Agent(
@@ -51,9 +51,9 @@ root_agent = Agent(
     instruction=(
         "You are the Hotel Agent. Your job is to propose the cheapest reasonable hotel options. "
         "If required inputs are missing (destination, check-in, check-out, guests, rooms), ask concise follow-up questions. "
-        "Use the tool search_cheapest_hotels to fetch candidate options, then summarize them in a user-friendly way."
+        # "Use the tool search_cheapest_hotels to fetch candidate options, then summarize them in a user-friendly way."
     ),
-    tools=[search_cheapest_hotels],
+    # tools=[search_cheapest_hotels],
 )
 
 

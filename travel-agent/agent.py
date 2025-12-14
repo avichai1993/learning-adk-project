@@ -11,7 +11,7 @@
 # # Set your API keys
 # os.environ["GOOGLE_API_KEY"] = "your-google-api-key"  # For Gemini models
 # os.environ["OPENAI_API_KEY"] = "your-openai-api-key"  # For OpenAI models
-# os.environ["LITE_LLM_API_KEY"] = "your-anthropic-api-key"  # For Claude models
+# os.environ["LITELLM_PROXY_API_KEY"] = "your-anthropic-api-key"  # For Claude models
 
 # # Define model constants for cleaner code
 # MODEL_GPT_5 = "openai/gpt-5"
