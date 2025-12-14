@@ -17,7 +17,7 @@ LITELLM_PROXY_BASE_URL = env_str("LITELLM_PROXY_BASE_URL", "")
 LITELLM_PROXY_API_KEY = env_str("LITELLM_PROXY_API_KEY", "")
 
 
-def _maybe_set_openai_env_for_litellm_proxy() -> None:
+def _set_openai_env_for_litellm_proxy() -> None:
     base_url = LITELLM_PROXY_BASE_URL
     if base_url.endswith("/v1/chat/completions"):
         base_url = base_url[: -len("/chat/completions")]
@@ -30,7 +30,7 @@ def _maybe_set_openai_env_for_litellm_proxy() -> None:
         os.environ["OPENAI_API_KEY"] = LITELLM_PROXY_API_KEY
 
 
-_maybe_set_openai_env_for_litellm_proxy()
+_set_openai_env_for_litellm_proxy()
 
 FLIGHT_AGENT_PORT = int(env_str("TRAVEL_FLIGHT_AGENT_PORT", "8011"))
 HOTEL_AGENT_PORT = int(env_str("TRAVEL_HOTEL_AGENT_PORT", "8012"))
