@@ -31,18 +31,18 @@ from .shared import settings
 #     }
 
 
-root_agent = Agent(
+itinerary_agent = Agent(
     name=settings.ITINERARY_AGENT_NAME,
     model=LiteLlm(model=settings.ITINERARY_MODEL, custom_llm_provider="openai"),
     description="Builds a day-by-day itinerary tailored to destination, dates, and preferences.",
     instruction=(
         "You are the Itinerary Agent. Build a clear day-by-day plan for the trip. "
         "If required inputs are missing (destination, dates), ask concise follow-up questions. "
-        # "Use the tool build_day_by_day_itinerary to get a rough skeleton, then expand it into a detailed itinerary. "
         "Include practical tips (transit, time allocations, reservations) and keep it realistic for the given dates."
+        # "Use the tool build_day_by_day_itinerary to get a rough skeleton, then expand it into a detailed itinerary. "
     ),
     # tools=[build_day_by_day_itinerary],
 )
 
 
-a2a_app = to_a2a(root_agent, port=settings.ITINERARY_AGENT_PORT)
+itinerary_a2a_app = to_a2a(itinerary_agent, port=settings.ITINERARY_AGENT_PORT)

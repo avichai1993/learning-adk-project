@@ -44,17 +44,19 @@ from .shared import settings
 #     }
 
 
-root_agent = Agent(
+hotel_agent = Agent(
     name=settings.HOTEL_AGENT_NAME,
     model=LiteLlm(model=settings.HOTEL_MODEL, custom_llm_provider="openai"),
     description="Handles hotel search logic and provides cheapest hotel suggestions.",
     instruction=(
         "You are the Hotel Agent. Your job is to propose the cheapest reasonable hotel options. "
         "If required inputs are missing (destination, check-in, check-out, guests, rooms), ask concise follow-up questions. "
+        "give the user a list of options and ask them to choose one. "
+        "once the user choose a hotel, write a short description of the hotel. "
         # "Use the tool search_cheapest_hotels to fetch candidate options, then summarize them in a user-friendly way."
     ),
     # tools=[search_cheapest_hotels],
 )
 
 
-a2a_app = to_a2a(root_agent, port=settings.HOTEL_AGENT_PORT)
+hotel_a2a_app = to_a2a(hotel_agent, port=settings.HOTEL_AGENT_PORT)

@@ -42,17 +42,19 @@ from .shared import settings
 #     }
 
 
-root_agent = Agent(
+flight_agent = Agent(
     name=settings.FLIGHT_AGENT_NAME,
     model=LiteLlm(model=settings.FLIGHT_MODEL, custom_llm_provider="openai"),
     description="Handles flight search logic and provides cheapest flight suggestions.",
     instruction=(
         "You are the Flight Agent. Your job is to propose the cheapest reasonable flight options. "
         "If required inputs are missing (origin, destination, dates, passengers), ask concise follow-up questions. "
+        "give the user a list of options and ask them to choose one. "
+        "once the user choose a flight, write a short description of the flight. "
         # "Use the tool search_cheapest_flights to fetch candidate options, then summarize them in a user-friendly way."
     ),
     # tools=[search_cheapest_flights],
 )
 
 
-a2a_app = to_a2a(root_agent, port=settings.FLIGHT_AGENT_PORT)
+flight_a2a_app = to_a2a(flight_agent, port=settings.FLIGHT_AGENT_PORT)
